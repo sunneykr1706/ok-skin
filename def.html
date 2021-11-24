@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="secondo.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+    
+<script >
+const steps = Array.from(document.querySelectorAll("form .step"));
+const nextBtn = document.querySelectorAll("form .next-btn");
+const prevBtn = document.querySelectorAll("form .previous-btn");
+const form = document.querySelector("form");
+
+nextBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    changeStep("next");
+  });
+});
+prevBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    changeStep("prev");
+  });
+});
+
+
+function changeStep(btn) {
+  let index = 0;
+  const active = document.querySelector(".active");
+  index = steps.indexOf(active);
+  steps[index].classList.remove("active");
+  if (btn === "next") {
+    index++;
+  } else if (btn === "prev") {
+    index--;
+  }
+  steps[index].classList.add("active");
+}
+
+
+</script>
+<title>Figma</title>
+<meta name="description" content="Our first page">
+<meta name="keywords" content="html tutorial template">
+</head>
+<body>
+<section>
+  <div class="container">
+    <form>
+
+      <div class="step step-1 active">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="first-name">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="last-name">
+        </div>
+        <div class="form-group">
+          <label for="nickName">Nick Name</label>
+          <input type="text" id="nickName" name="nick-name">
+        </div>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+
+      <div class="step step-2">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="number" id="phone" name="phone-number">
+        </div>
+        <button type="button" class="previous-btn">Prev</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+
+      <div class="step step-3">
+        <div class="form-group">
+          <label for="country">country</label>
+          <input type="text" id="country" name="country">
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city">
+        </div>
+        <div class="form-group">
+          <label for="postCode">Post Code</label>
+          <input type="text" id="postCode" name="post-code">
+        </div>
+        <button type="button" class="previous-btn">Prev</button>
+        <button type="submit" class="submit-btn">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+</body>
+</html>
